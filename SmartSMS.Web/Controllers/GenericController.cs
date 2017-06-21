@@ -7,7 +7,7 @@ using SmartSMS.Web.Entities;
 
 namespace SmartSMS.Web.Controllers
 {
-  public class GenericController<TEntity> : Controller where TEntity : class, IEntity
+  public abstract class GenericController<TEntity> : Controller where TEntity : class, IEntity
   {
     internal readonly GenericRepository<TEntity> _repo;
     internal readonly ILogger<GenericController<TEntity>> _logger;

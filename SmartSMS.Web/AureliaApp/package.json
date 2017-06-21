@@ -1,0 +1,16 @@
+{
+  "jspm": {
+    "dependencies": {
+      "aurelia-bootstrap": "github:tochoromero/aurelia-bootstrap@^0.1.19",
+      "aurelia-dialog": "npm:aurelia-dialog@^1.0.0-rc.1.0.3",
+      "aurelia-fetch-client": "npm:aurelia-fetch-client@^1.1.2",
+      "aurelia-framework": "npm:aurelia-framework@^1.1.2",
+      "fetch": "github:github/fetch@^2.0.3"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  }
+}
