@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 
 namespace SmartSMS.Web.Entities {
-  public class Class :ClientChangeTracker{
+  public class Class :ClientChangeTracker ,IEntity{
     public Class() {
       Students=new List<Student>();
     }

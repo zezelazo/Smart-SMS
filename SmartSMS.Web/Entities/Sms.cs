@@ -1,7 +1,7 @@
 using System;
 
 namespace SmartSMS.Web.Entities {
-  public class Sms :ClientChangeTracker{
+  public class Sms :ClientChangeTracker,IEntity{
     public int Id { get; set; }
     public StudentMessage StudentMessage { get; set; }
     public int StudentMessageId { get; set; }

@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 namespace SmartSMS.Web.Entities
 {
   public class ClientChangeTracker : INotifyPropertyChanged
-  {
+  { 
     private bool _isDirty;
 
     public bool IsDirty

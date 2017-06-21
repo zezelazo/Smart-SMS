@@ -9,7 +9,7 @@ using SmartSMS.Web.Entities;
 
 namespace SmartSMS.Web.Data
 {
-  public class GenericRepository<TEntity> where TEntity : class
+  public class GenericRepository<TEntity> where TEntity : class,IEntity
   {
     internal DbContext _context;
     internal DbSet<TEntity> _dbSet;
@@ -42,33 +42,36 @@ namespace SmartSMS.Web.Data
 
     public async Task<TEntity> FindByKey(int id)
     {
-      Expression<Func<TEntity, bool>> lambda = BuildLambdaForFindByKey<TEntity>(id);
-      return await _dbSet.SingleOrDefaultAsync(lambda);
+      //Expression<Func<TEntity, bool>> lambda = BuildLambdaForFindByKey<TEntity>(id);
+      return await _dbSet.SingleOrDefaultAsync(e=>e.Id==id);
     }
  
-    public async void InsertOrUpdate(TEntity entity)
+    public async Task<TEntity> InsertOrUpdate(TEntity entity)
     {
       _context.ChangeTracker.TrackGraph (entity, e=>ApplyStateUsingIsKeySet(e.Entry));
       await _context.SaveChangesAsync();
+      return entity;
     }
 
-    public async void Delete(int id)
+    public async Task<bool> Delete(int id)
     {
       var entity = await FindByKey(id);
       _context.Entry(entity).State=EntityState.Deleted;
+      await _context.SaveChangesAsync();
+      return true;
     }
 
-    internal Expression<Func<TEntity, bool>> BuildLambdaForFindByKey<TEntity>(int id)
-    {
-      var item = Expression.Parameter(typeof(TEntity), "entity");
-      var prop = Expression.Property(item, "Id");//typeof(TEntity).Name + "Id");
-      var value = Expression.Constant(id);
-      var equal = Expression.Equal(prop, value);
-      var lambda = Expression.Lambda<Func<TEntity, bool>>(equal, item);
-      return lambda;
-    }
+    // internal Expression<Func<TEntity, bool>> BuildLambdaForFindByKey<TEntity>(int id)
+    // {
+    //   var item = Expression.Parameter(typeof(TEntity), "entity");
+    //   var prop = Expression.Property(item, "Id");//typeof(TEntity).Name + "Id");
+    //   var value = Expression.Constant(id);
+    //   var equal = Expression.Equal(prop, value);
+    //   var lambda = Expression.Lambda<Func<TEntity, bool>>(equal, item);
+    //   return lambda;
+    // }
 
-    private static void ApplyStateUsingIsKeySet(EntityEntry entry)
+    private  void ApplyStateUsingIsKeySet(EntityEntry entry)
     {
       if (entry.IsKeySet)
       {

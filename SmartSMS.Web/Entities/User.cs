@@ -1,5 +1,5 @@
 namespace SmartSMS.Web.Entities {
-  public class User :ClientChangeTracker{
+  public class User :ClientChangeTracker,IEntity{
     public int Id { get; set; }
     public string UserName { get; set; }
 

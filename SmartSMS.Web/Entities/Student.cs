@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 
 namespace SmartSMS.Web.Entities {
-  public class Student:ClientChangeTracker {
+  public class Student:ClientChangeTracker,IEntity {
     public Student() {
       Messages = new HashSet<StudentMessage>();
     }

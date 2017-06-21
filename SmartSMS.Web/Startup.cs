@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using SmartSMS.Web.Data;
 using SmartSMS.Web.Entities;
 
@@ -34,7 +35,7 @@ namespace SmartSMS.Web {
 
       //services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<SmartSmsContext>();
 
-      services.AddMvc();
+      services.AddMvc().AddJsonOptions(opt=>opt.SerializerSettings.ReferenceLoopHandling=ReferenceLoopHandling.Ignore );
     }
 
     public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory,SmartSmsDbInitializer seeder) {

@@ -1,5 +1,5 @@
 namespace SmartSMS.Web.Entities {
-  public class Contact:ClientChangeTracker {
+  public class Contact:ClientChangeTracker,IEntity {
     public int Id { get; set; }
     public string LegalId { get; set; }
     public string Prefix { get; set; }
