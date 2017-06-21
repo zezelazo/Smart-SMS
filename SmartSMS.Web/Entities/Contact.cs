@@ -1,7 +1,5 @@
-namespace SmartSMS.Data
-{
-  public class Contact
-  {
+namespace SmartSMS.Web.Entities {
+  public class Contact:ClientChangeTracker {
     public int Id { get; set; }
     public string LegalId { get; set; }
     public string Prefix { get; set; }
