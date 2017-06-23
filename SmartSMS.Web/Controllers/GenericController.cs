@@ -43,7 +43,7 @@ namespace SmartSMS.Web.Controllers
       return BadRequest();
     }
 
-    [HttpGet("{id}", Name = "GetOne")]
+    [HttpGet("{id}")]
     public async Task<IActionResult> GetOne(int id)
     {
       try
@@ -73,8 +73,9 @@ namespace SmartSMS.Web.Controllers
         {
           _logger.LogInformation($"Trying to create new item");
           var result = await _repo.InsertOrUpdate(item);
+          //TODO:Review generic link generation
           var newUri = Url.Link("GetOne", new { id = result.Id });
-          return Created(newUri, result);
+          return Created("", result);
         }
         else
         {

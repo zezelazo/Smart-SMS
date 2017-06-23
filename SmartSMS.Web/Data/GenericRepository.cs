@@ -9,7 +9,7 @@ using SmartSMS.Web.Entities;
 
 namespace SmartSMS.Web.Data
 {
-  public class GenericRepository<TEntity> where TEntity : class,IEntity
+  public class GenericRepository<TEntity> where TEntity : class, IEntity
   {
     internal DbContext _context;
     internal DbSet<TEntity> _dbSet;
@@ -22,41 +22,41 @@ namespace SmartSMS.Web.Data
       _dbSet = context.Set<TEntity>();
     }
 
-    public async Task<IEnumerable<TEntity>> All()
+    public virtual async Task<IEnumerable<TEntity>> All()
     {
       return await _dbSet.ToListAsync();
     }
 
-    public async Task<IEnumerable<TEntity>> All(int page = 1,int pagesize =PAGE_SIZE )
+    public virtual async Task<IEnumerable<TEntity>> All(int page = 1, int pagesize = PAGE_SIZE)
     {
-      if(page<1) throw new ArgumentOutOfRangeException("page");
-      if(pagesize<1) throw new ArgumentOutOfRangeException("pagesize");
-      return await _dbSet.Skip(page-1).Take(pagesize).ToListAsync();
+      if (page < 1) throw new ArgumentOutOfRangeException("page");
+      if (pagesize < 1) throw new ArgumentOutOfRangeException("pagesize");
+      return await _dbSet.Skip(page - 1).Take(pagesize).ToListAsync();
     }
 
-    public async Task<IEnumerable<TEntity>> FindBy(Expression<Func<TEntity, bool>> predicate)
+    public virtual async Task<IEnumerable<TEntity>> FindBy(Expression<Func<TEntity, bool>> predicate)
     {
       IEnumerable<TEntity> results = await _dbSet.Where(predicate).ToListAsync();
       return results;
     }
 
-    public async Task<TEntity> FindByKey(int id)
+    public virtual async Task<TEntity> FindByKey(int id)
     {
       //Expression<Func<TEntity, bool>> lambda = BuildLambdaForFindByKey<TEntity>(id);
-      return await _dbSet.SingleOrDefaultAsync(e=>e.Id==id);
+      return await _dbSet.SingleOrDefaultAsync(e => e.Id == id);
     }
- 
-    public async Task<TEntity> InsertOrUpdate(TEntity entity)
+
+    public virtual async Task<TEntity> InsertOrUpdate(TEntity entity)
     {
-      _context.ChangeTracker.TrackGraph (entity, e=>ApplyStateUsingIsKeySet(e.Entry));
+      _context.ChangeTracker.TrackGraph(entity, e => ApplyStateUsingIsKeySet(e.Entry));
       await _context.SaveChangesAsync();
       return entity;
     }
 
-    public async Task<bool> Delete(int id)
+    public virtual async Task<bool> Delete(int id)
     {
       var entity = await FindByKey(id);
-      _context.Entry(entity).State=EntityState.Deleted;
+      _context.Entry(entity).State = EntityState.Deleted;
       await _context.SaveChangesAsync();
       return true;
     }
@@ -71,7 +71,7 @@ namespace SmartSMS.Web.Data
     //   return lambda;
     // }
 
-    private  void ApplyStateUsingIsKeySet(EntityEntry entry)
+    private void ApplyStateUsingIsKeySet(EntityEntry entry)
     {
       if (entry.IsKeySet)
       {

@@ -35,6 +35,5 @@ namespace SmartSMS.Web.Data
                                       .ToDictionaryAsync(t => t.Id, t => t.Name);
         return items.ToList();
       } 
-
     }
 }

@@ -23,14 +23,14 @@ namespace SmartSMS.Web {
       services.AddSingleton(_config);
       services.AddDbContext<SmartSmsContext>(ServiceLifetime.Scoped);
       services.AddTransient<SmartSmsDbInitializer>();
-      
-      services.AddScoped<GenericRepository<Class>>();
-      services.AddScoped<GenericRepository<Grade>>();
+
+      services.AddScoped<LookUpsData>();
+      services.AddScoped<GenericRepository<Student>, StudentsRepository>();
+      services.AddScoped<GenericRepository<MessageDefinition>,MessageDefinitionsRepository>();
+
       services.AddScoped<GenericRepository<Level>>();
-      
-      services.AddScoped<GenericRepository<MessageDefinition>>();
-      services.AddScoped<GenericRepository<Student>>();
-                            
+
+
       services.AddLogging();
 
       //services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<SmartSmsContext>();
@@ -47,9 +47,10 @@ namespace SmartSMS.Web {
       } else {
         loggerFactory.AddDebug(LogLevel.Error);
       }
-      
-      app.UseStaticFiles();
+
       app.UseDefaultFiles();
+      app.UseStaticFiles();
+      
       
       //seeder.Seed().Wait();
       app.UseMvc();

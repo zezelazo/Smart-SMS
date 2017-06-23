@@ -1,24 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
-  <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
-    <RuntimeFrameworkVersion>2.0.0-preview3-25413-01</RuntimeFrameworkVersion>
-    <UserSecretsId>aspnet-SmartSMS.Web-4C1F99BF-5E18-4D71-9F99-F2A16D53A009</UserSecretsId>
-    <IsPackable>false</IsPackable> 
-  </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0-preview3-25813" />  
-  </ItemGroup>
-
-  <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0-preview3-25813" />
-  </ItemGroup>
-
- 
+	<PropertyGroup>
+		<TargetFramework>netcoreapp2.0</TargetFramework>
+		<RuntimeFrameworkVersion>2.0.0-preview3-25413-01</RuntimeFrameworkVersion>
+		<UserSecretsId>aspnet-SmartSMS.Web-4C1F99BF-5E18-4D71-9F99-F2A16D53A009</UserSecretsId>
+		<IsPackable>false</IsPackable>
+	</PropertyGroup>
+	<ItemGroup>
+		<Folder Include="wwwroot\" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0-preview3-25813" />
+	</ItemGroup>
+	<ItemGroup>
+		<DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0-preview3-25813" />
+	</ItemGroup>
 
 </Project>

@@ -261,4 +261,5 @@ __pycache__/
 *.pyc
 
 #JSPM
-**/jspm_packages/*
+**/jspm_packages/* 
+**/wwwroot/*
