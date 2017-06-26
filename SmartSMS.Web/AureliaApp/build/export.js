@@ -11,7 +11,7 @@ module.exports = {
     'jspm_packages/system-csp-production.js',
     'styles/styles.css',
     'dist/aurelia',
-    'dist/app'
+    'dist/app-bundle'
   ],
   // this section lists any jspm packages that have
   // unbundled resources that need to be exported.

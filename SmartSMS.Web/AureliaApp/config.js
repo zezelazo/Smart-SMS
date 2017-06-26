@@ -9,6 +9,7 @@ System.config({
   map: {
     "aurelia-animator-css": "npm:aurelia-animator-css@1.0.1",
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.1",
+    "aurelia-dialog": "npm:aurelia-dialog@1.0.0-rc.1.0.3",
     "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.1",
     "aurelia-framework": "npm:aurelia-framework@1.1.2",
     "aurelia-history-browser": "npm:aurelia-history-browser@1.0.0",
@@ -99,6 +100,12 @@ System.config({
     "npm:aurelia-dependency-injection@1.3.1": {
       "aurelia-metadata": "npm:aurelia-metadata@1.0.3",
       "aurelia-pal": "npm:aurelia-pal@1.3.0"
+    },
+    "npm:aurelia-dialog@1.0.0-rc.1.0.3": {
+      "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.3.1",
+      "aurelia-metadata": "npm:aurelia-metadata@1.0.3",
+      "aurelia-pal": "npm:aurelia-pal@1.3.0",
+      "aurelia-templating": "npm:aurelia-templating@1.4.2"
     },
     "npm:aurelia-event-aggregator@1.0.1": {
       "aurelia-logging": "npm:aurelia-logging@1.3.1"
@@ -303,56 +310,12 @@ System.config({
       "indexof": "npm:indexof@0.0.1"
     }
   },
-  depCache: {
-    "github:systemjs/plugin-css@0.1.35.js": [
-      "github:systemjs/plugin-css@0.1.35/css"
-    ],
-    "npm:moment@2.18.1.js": [
-      "npm:moment@2.18.1/moment.js"
-    ],
-    "npm:jsrender@0.9.86.js": [
-      "npm:jsrender@0.9.86/jsrender.js"
-    ],
-    "npm:jquery.easing@1.4.1.js": [
-      "npm:jquery.easing@1.4.1/jquery.easing.js"
-    ],
-    "npm:jquery.easing@1.4.1/jquery.easing.js": [
-      "jquery"
-    ],
-    "npm:jquery@2.2.4.js": [
-      "npm:jquery@2.2.4/dist/jquery.js"
-    ],
-    "github:aspnet/jquery-validation-unobtrusive@3.2.6.js": [
-      "github:aspnet/jquery-validation-unobtrusive@3.2.6/jquery.validate.unobtrusive"
-    ],
-    "github:aspnet/jquery-validation-unobtrusive@3.2.6/jquery.validate.unobtrusive.js": [
-      "jquery-validation"
-    ],
-    "github:jquery-validation/jquery-validation@1.16.0.js": [
-      "github:jquery-validation/jquery-validation@1.16.0/dist/jquery.validate.js"
-    ],
-    "github:jquery-validation/jquery-validation@1.16.0/dist/jquery.validate.js": [
-      "jquery"
-    ],
-    "blur-image.js": [
-      "aurelia-framework"
-    ],
-    "main.js": [
-      "bootstrap"
-    ],
-    "users.js": [
-      "aurelia-framework",
-      "aurelia-fetch-client",
-      "fetch"
-    ]
-  },
   bundles: {
-    "app.js": [
+    "app-bundle.js": [
       "app.html!github:systemjs/plugin-text@0.0.8.js",
       "app.js",
       "blur-image.js",
-      "child-router.html!github:systemjs/plugin-text@0.0.8.js",
-      "child-router.js",
+      "components/nav-bar.html!github:systemjs/plugin-text@0.0.8.js",
       "github:aspnet/jquery-validation-unobtrusive@3.2.6.js",
       "github:aspnet/jquery-validation-unobtrusive@3.2.6/jquery.validate.unobtrusive.js",
       "github:jquery-validation/jquery-validation@1.16.0.js",
@@ -360,7 +323,6 @@ System.config({
       "github:systemjs/plugin-css@0.1.35.js",
       "github:systemjs/plugin-css@0.1.35/css.js",
       "main.js",
-      "nav-bar.html!github:systemjs/plugin-text@0.0.8.js",
       "npm:jquery.easing@1.4.1.js",
       "npm:jquery.easing@1.4.1/jquery.easing.js",
       "npm:jquery@2.2.4.js",
@@ -369,6 +331,20 @@ System.config({
       "npm:jsrender@0.9.86/jsrender.js",
       "npm:moment@2.18.1.js",
       "npm:moment@2.18.1/moment.js",
+      "pages/contacts/index.html!github:systemjs/plugin-text@0.0.8.js",
+      "pages/contacts/index.js",
+      "pages/messages/index.html!github:systemjs/plugin-text@0.0.8.js",
+      "pages/messages/index.js",
+      "pages/others/about.html!github:systemjs/plugin-text@0.0.8.js",
+      "pages/others/about.js",
+      "pages/others/classes.html!github:systemjs/plugin-text@0.0.8.js",
+      "pages/others/classes.js",
+      "pages/others/grades.html!github:systemjs/plugin-text@0.0.8.js",
+      "pages/others/grades.js",
+      "pages/others/index.html!github:systemjs/plugin-text@0.0.8.js",
+      "pages/others/index.js",
+      "pages/others/levels.html!github:systemjs/plugin-text@0.0.8.js",
+      "pages/others/levels.js",
       "users.html!github:systemjs/plugin-text@0.0.8.js",
       "users.js",
       "welcome.html!github:systemjs/plugin-text@0.0.8.js",
@@ -390,6 +366,21 @@ System.config({
       "npm:aurelia-bootstrapper@1.0.1/aurelia-bootstrapper.js",
       "npm:aurelia-dependency-injection@1.3.1.js",
       "npm:aurelia-dependency-injection@1.3.1/aurelia-dependency-injection.js",
+      "npm:aurelia-dialog@1.0.0-rc.1.0.3.js",
+      "npm:aurelia-dialog@1.0.0-rc.1.0.3/attach-focus.js",
+      "npm:aurelia-dialog@1.0.0-rc.1.0.3/aurelia-dialog.js",
+      "npm:aurelia-dialog@1.0.0-rc.1.0.3/dialog-cancel-error.js",
+      "npm:aurelia-dialog@1.0.0-rc.1.0.3/dialog-configuration.js",
+      "npm:aurelia-dialog@1.0.0-rc.1.0.3/dialog-controller.js",
+      "npm:aurelia-dialog@1.0.0-rc.1.0.3/dialog-renderer.js",
+      "npm:aurelia-dialog@1.0.0-rc.1.0.3/dialog-service.js",
+      "npm:aurelia-dialog@1.0.0-rc.1.0.3/dialog-settings.js",
+      "npm:aurelia-dialog@1.0.0-rc.1.0.3/lifecycle.js",
+      "npm:aurelia-dialog@1.0.0-rc.1.0.3/renderer.js",
+      "npm:aurelia-dialog@1.0.0-rc.1.0.3/ux-dialog-body.js",
+      "npm:aurelia-dialog@1.0.0-rc.1.0.3/ux-dialog-footer.js",
+      "npm:aurelia-dialog@1.0.0-rc.1.0.3/ux-dialog-header.js",
+      "npm:aurelia-dialog@1.0.0-rc.1.0.3/ux-dialog.js",
       "npm:aurelia-event-aggregator@1.0.1.js",
       "npm:aurelia-event-aggregator@1.0.1/aurelia-event-aggregator.js",
       "npm:aurelia-fetch-client@1.0.1.js",
@@ -471,6 +462,49 @@ System.config({
       "npm:aurelia-templating@1.4.2/aurelia-templating.js",
       "npm:jquery@2.2.4.js",
       "npm:jquery@2.2.4/dist/jquery.js"
+    ]
+  },
+  depCache: {
+    "github:systemjs/plugin-css@0.1.35.js": [
+      "github:systemjs/plugin-css@0.1.35/css"
+    ],
+    "npm:moment@2.18.1.js": [
+      "npm:moment@2.18.1/moment.js"
+    ],
+    "npm:jsrender@0.9.86.js": [
+      "npm:jsrender@0.9.86/jsrender.js"
+    ],
+    "npm:jquery.easing@1.4.1.js": [
+      "npm:jquery.easing@1.4.1/jquery.easing.js"
+    ],
+    "npm:jquery.easing@1.4.1/jquery.easing.js": [
+      "jquery"
+    ],
+    "npm:jquery@2.2.4.js": [
+      "npm:jquery@2.2.4/dist/jquery.js"
+    ],
+    "github:aspnet/jquery-validation-unobtrusive@3.2.6.js": [
+      "github:aspnet/jquery-validation-unobtrusive@3.2.6/jquery.validate.unobtrusive"
+    ],
+    "github:aspnet/jquery-validation-unobtrusive@3.2.6/jquery.validate.unobtrusive.js": [
+      "jquery-validation"
+    ],
+    "github:jquery-validation/jquery-validation@1.16.0.js": [
+      "github:jquery-validation/jquery-validation@1.16.0/dist/jquery.validate.js"
+    ],
+    "github:jquery-validation/jquery-validation@1.16.0/dist/jquery.validate.js": [
+      "jquery"
+    ],
+    "blur-image.js": [
+      "aurelia-framework"
+    ],
+    "main.js": [
+      "bootstrap"
+    ],
+    "users.js": [
+      "aurelia-framework",
+      "aurelia-fetch-client",
+      "fetch"
     ]
   }
 });

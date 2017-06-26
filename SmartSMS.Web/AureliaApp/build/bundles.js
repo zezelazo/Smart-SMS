@@ -1,6 +1,6 @@
 module.exports = {
   "bundles": {
-    "dist/app": {
+    "dist/app-bundle": {
       "includes": [
         "[**/*.js]",
         "**/*.html!text",
@@ -27,6 +27,7 @@ module.exports = {
         "aurelia-bootstrapper",
         "aurelia-fetch-client",
         "aurelia-router",
+        "aurelia-dialog",
         "aurelia-task-queue",
         "aurelia-animator-css",
         "aurelia-templating-binding",

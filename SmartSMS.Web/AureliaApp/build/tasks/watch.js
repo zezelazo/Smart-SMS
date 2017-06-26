@@ -20,3 +20,15 @@ gulp.task('watch', ['serve'], function() {
       .pipe(browserSync.stream());
   }).on('change', reportChange);
 });
+
+gulp.task('watch-b', ['serve-bundle'], function() {
+  gulp.watch(paths.source, ['build-system','serve-bundle', browserSync.reload]).on('change', reportChange);
+  gulp.watch(paths.html, ['build-html','serve-bundle', browserSync.reload]).on('change', reportChange);
+  gulp.watch(paths.css, ['build-css','serve-bundle']).on('change', reportChange);
+  gulp.watch(paths.style, function() {
+    return gulp.src(paths.style)
+      .pipe(browserSync.stream());
+  }).on('change', reportChange);
+});
+
+

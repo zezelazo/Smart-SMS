@@ -263,3 +263,6 @@ __pycache__/
 #JSPM
 **/jspm_packages/* 
 **/wwwroot/*
+SmartSMS\.Web/AureliaApp/dist/
+
+SmartSMS\.Web/AureliaApp/jspm_packages/
